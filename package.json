@@ -20,7 +20,6 @@
     "@react-three/uikit-apfel": "^0.8.7",
     "@react-three/uikit-default": "^0.8.7",
     "@react-three/xr": "^6.5.6",
-    "@vercel/analytics": "^1.5.0",
     "howler": "^2.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
