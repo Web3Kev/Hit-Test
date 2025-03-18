@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 
 import {
   createXRStore,
@@ -20,7 +20,7 @@ import { Ducks } from './ducks'
 import { useSpawnStore } from './store'
 import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
-import './App.css';
+
 
 export let hitTestMatrices: Partial<Record<XRHandedness, Matrix4 | undefined>> = {}
 
@@ -82,22 +82,8 @@ export function App() {
     }
   }
 
-  useEffect(() => {
-    const appHeight = () => {
-      const doc = document.documentElement;
-      doc.style.setProperty('--app-height', `${window.innerHeight}px`);
-    };
-    appHeight();
-    window.addEventListener('resize', appHeight);
-    window.addEventListener('orientationchange', appHeight);
-    return () => {
-      window.removeEventListener('resize', appHeight);
-      window.removeEventListener('orientationchange', appHeight);
-    };
-  }, []);
-
   return (
-    <div className="app-container">
+    <>
       {/* Start AR button - Center Top */}
       <button
         onClick={() => xr_store.enterAR()}
@@ -119,8 +105,8 @@ export function App() {
       >
         Enter AR
       </button>
-
-      {/* <button
+<div className='interface'>
+          <button
   onClick={() => xr_store.getState().session?.end()}
   style={{
     position: "absolute",
@@ -172,7 +158,8 @@ export function App() {
   }}
 >
   +
-</button> */}
+</button>
+</div>
 
       <Canvas>
         <XR store={xr_store}>
@@ -210,9 +197,9 @@ export function App() {
                 onClick={()=>handleSpawnDuck()}
                 style={{
                   position: "absolute",
-                  top: "80%",
+                  top: "50px",
                   left: "50%",
-                  transform: "translateY(-80%)",
+                  transform: "translateX(-50%)",
                   padding: "10px 20px",
                   borderRadius: "12px",
                   background: "#FFD700",
@@ -238,6 +225,6 @@ export function App() {
           </IfInSessionMode>
         </XR>
       </Canvas>
-    </div>
+    </>
   )
 }
