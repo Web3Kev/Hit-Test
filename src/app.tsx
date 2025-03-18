@@ -140,7 +140,7 @@ export function App() {
                 onClick={()=>handleSpawnDuck()}
                 style={{
                   position: "absolute",
-                  bottom: "50px",
+                  top: "50px",
                   left: "50%",
                   transform: "translateX(-50%)",
                   padding: "10px 20px",
