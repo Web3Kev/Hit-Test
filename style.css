@@ -64,7 +64,7 @@ body,
   color: #faf8f8;
   font-size: 22px;
   background: indianred;
-  padding: 20px 20px 40px 20px;
+  padding: 20px 20px 80px 20px;
   text-align: left;
   z-index: 100;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -78,12 +78,14 @@ body,
   position: absolute;
   bottom: 20px;
   right: 55px;
-  background: #e8e7e2;
-  color: black;
+  background: rosybrown;
+  color: white;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: normal;
   border: none;
   padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 35px;
   border-radius: 10px;
   cursor: pointer;

@@ -100,6 +100,7 @@ export function App() {
         Enter AR
       </button>
 
+   
       
 
       <Canvas>
@@ -120,7 +121,7 @@ export function App() {
                 3 - Place a duck (press button)<br />
 
                 <button
-                  onClick={() => hideInfo}
+                  onClick={() => hideInfo()}
                 >
                   close
                 </button>
