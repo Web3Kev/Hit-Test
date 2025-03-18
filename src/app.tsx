@@ -137,7 +137,7 @@ export function App() {
 
               {/* Duck spawn button - Bottom Center */}
               <button
-                onClick={handleSpawnDuck}
+                onClick={()=>handleSpawnDuck()}
                 style={{
                   position: "absolute",
                   bottom: "50px",
