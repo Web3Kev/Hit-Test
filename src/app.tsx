@@ -13,7 +13,6 @@ import {
   XRSpace,
 } from '@react-three/xr'
 
-
 import { Matrix4 } from 'three'
 import { Duck } from './duck'
 import { Ducks } from './ducks'
@@ -104,6 +103,28 @@ export function App() {
         Enter AR
       </button>
 
+      {/* <button
+        onClick={()=>handleSpawnDuck()}
+        style={{
+          position: "absolute",
+          bottom: "50px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          padding: "10px 20px",
+          borderRadius: "12px",
+          background: "#FFD700",
+          width: "150px",
+          height:"50px",
+          color: "black",
+          border: "none",
+          cursor: "pointer",
+          fontSize: "20px",
+          fontWeight: "bold",
+        }}
+      >
+        Duck
+      </button> */}
+
       <Canvas>
         <XR store={xr_store}>
           <directionalLight position={[1, 2, 1]} />
@@ -140,7 +161,7 @@ export function App() {
                 onClick={()=>handleSpawnDuck()}
                 style={{
                   position: "absolute",
-                  top: "50px",
+                  bottom: "50px",
                   left: "50%",
                   transform: "translateX(-50%)",
                   padding: "10px 20px",
@@ -151,6 +172,8 @@ export function App() {
                   cursor: "pointer",
                   fontSize: "20px",
                   fontWeight: "bold",
+                  width: "150px",
+                  height:"50px",
                 }}
               >
                 Duck

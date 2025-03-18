@@ -1,6 +1,6 @@
 {
   "name": "hit-test",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -10,17 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@pmndrs/handle": "^6.5.6",
-    "@pmndrs/pointer-events": "^6.5.6",
-    "@react-spring/three": "^9.7.5",
-    "@react-three/drei": "^9.120.8",
     "@react-three/fiber": "^8.17.12",
-    "@react-three/handle": "^6.5.5",
-    "@react-three/uikit": "^0.8.4",
-    "@react-three/uikit-apfel": "^0.8.7",
-    "@react-three/uikit-default": "^0.8.7",
     "@react-three/xr": "^6.5.6",
-    "howler": "^2.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "three": "^0.172.0",
@@ -28,7 +19,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "@types/howler": "^2.2.12",
     "@types/node": "^22.13.4",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
