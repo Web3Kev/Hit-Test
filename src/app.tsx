@@ -182,12 +182,12 @@ export function App() {
                 className='top-right'
               >
                 <img 
-                  src="exit.png"  // Path to your exit.png file
+                  src="exit.png" 
                   alt="Exit"
                   style={{
-                    width: "30px", // Set the image size
-                    height: "30px", // Set the image size
-                    objectFit: "contain", // Ensure the image doesn't stretch
+                    width: "30px", 
+                    height: "30px", 
+                    objectFit: "contain", 
                   }}
                 />
               </button>
@@ -196,12 +196,12 @@ export function App() {
                 className='bottom-right'
               >
                 <img 
-                  src="duck.png"  // Path to your exit.png file
+                  src="duck.png"  
                   alt="Duck"
                   style={{
-                    width: "45px", // Set the image size
-                    height: "45px", // Set the image size
-                    objectFit: "contain", // Ensure the image doesn't stretch
+                    width: "45px", 
+                    height: "45px",
+                    objectFit: "contain",
                   }}
                 />
               </button>
