@@ -215,7 +215,7 @@ export function App() {
                 Duck
               </button> */}
 
-              <div className='interface'>
+              <div id='interface' >
                         <button
                 onClick={() => xr_store.getState().session?.end()}
                 style={{
