@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Quaternion, Vector3 } from 'three'
 import { Duck } from './duck.js'
 import { hitTestMatrices } from './app.js'
-import React from 'react'
+
 
 const vectorHelper = new Vector3()
 

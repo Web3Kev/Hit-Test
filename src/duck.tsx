@@ -7,7 +7,7 @@
  * license: CC0
  */
 import { useGLTF } from '@react-three/drei'
-import React from 'react'
+
 
 // const MODEL = 'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/duck/model.gltf'
 const MODEL = 'duck.gltf'

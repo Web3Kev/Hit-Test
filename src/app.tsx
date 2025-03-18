@@ -15,8 +15,8 @@ import {
 
 
 import { Matrix4 } from 'three'
-import React from 'react'
-import { HitTest } from './hit-test'
+
+// import { HitTest } from './hit-test'
 import { Duck } from './duck'
 import { Ducks } from './ducks'
 import { HitTestHandheld } from './hit-test-handheld'

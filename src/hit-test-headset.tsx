@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Reticle } from './reticle.js'
 
 export const HitTestHeadset = () => {
