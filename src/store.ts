@@ -9,3 +9,5 @@ export const useSpawnStore = create<SpawnState>((set) => ({
   spawnCall: false,
   setSpawnCall: (value) => set({ spawnCall: value }),
 }))
+
+//store
