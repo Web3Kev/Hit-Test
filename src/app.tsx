@@ -105,61 +105,28 @@ export function App() {
       >
         Enter AR
       </button>
-{/* <div className='interface'>
-          <button
-  onClick={() => xr_store.getState().session?.end()}
-  style={{
-    position: "absolute",
-    top: "50px",
-    right: "20px",
-    borderRadius: "20%",
-    background: "red",
-    border: "none",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "50px", // Set the button size
-    height: "50px", // Set the button size
-  }}
->
-  <img 
-    src="exit.png"  // Path to your exit.png file
-    alt="Exit"
-    style={{
-      width: "30px", // Set the image size
-      height: "30px", // Set the image size
-      objectFit: "contain", // Ensure the image doesn't stretch
-    }}
-  />
-</button>
-<button
-  onClick={() => handleSpawnDuck()}
-  style={{
-    position: "absolute",
-    top: "80%",
-    right: "20px",
-    transform: "translateY(-80%)",
-    padding: "0", // Remove padding to allow the button size to fit the content
-    paddingBottom :"8px",
-    borderRadius: "12px",
-    background: "#FFD700",
-    color: "black",
-    border: "none",
-    cursor: "pointer",
-    fontSize: "50px", // Ensure this is large enough
-    fontWeight: "bold",
-    width: "50px", // Set width to match font size or slightly bigger
-    height: "50px", // Set height to match font size or slightly bigger
-    display: "flex",
-    alignItems: "center", // Centers vertically
-    justifyContent: "center", // Centers horizontally
-    lineHeight: "50px", // Ensure line-height matches the height to center text vertically
-  }}
->
-  +
-</button>
-</div> */}
+      {/* <div id='interface' >
+                        <button
+                onClick={() => xr_store.getState().session?.end()}
+                className='top-right'
+              >
+                <img 
+                  src="exit.png"  // Path to your exit.png file
+                  alt="Exit"
+                  style={{
+                    width: "30px", // Set the image size
+                    height: "30px", // Set the image size
+                    objectFit: "contain", // Ensure the image doesn't stretch
+                  }}
+                />
+              </button>
+              <button
+                onClick={() => handleSpawnDuck()}
+                className='bottom-right'
+              >
+                +
+              </button>
+              </div> */}
 
       <Canvas>
         <XR store={xr_store}>
@@ -216,22 +183,9 @@ export function App() {
               </button> */}
 
               <div id='interface' >
-                        <button
+              <button
                 onClick={() => xr_store.getState().session?.end()}
-                style={{
-                  position: "absolute",
-                  top: "50px",
-                  right: "20px",
-                  borderRadius: "20%",
-                  background: "red",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "50px", // Set the button size
-                  height: "50px", // Set the button size
-                }}
+                className='top-right'
               >
                 <img 
                   src="exit.png"  // Path to your exit.png file
@@ -245,27 +199,7 @@ export function App() {
               </button>
               <button
                 onClick={() => handleSpawnDuck()}
-                style={{
-                  position: "absolute",
-                  top: "80%",
-                  right: "20px",
-                  transform: "translateY(-80%)",
-                  padding: "0", // Remove padding to allow the button size to fit the content
-                  paddingBottom :"8px",
-                  borderRadius: "12px",
-                  background: "#FFD700",
-                  color: "black",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "50px", // Ensure this is large enough
-                  fontWeight: "bold",
-                  width: "50px", // Set width to match font size or slightly bigger
-                  height: "50px", // Set height to match font size or slightly bigger
-                  display: "flex",
-                  alignItems: "center", // Centers vertically
-                  justifyContent: "center", // Centers horizontally
-                  lineHeight: "50px", // Ensure line-height matches the height to center text vertically
-                }}
+                className='bottom-right'
               >
                 +
               </button>

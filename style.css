@@ -46,6 +46,46 @@ body,
 
 }
 
+.bottom-right {
+  position: absolute;
+  top: 80%;
+  right: 20px;
+  transform: translateY(-80%);
+  padding: 0; 
+  border-radius: 12px;
+  background: #FFD700;
+  color: black;
+  border: none;
+  font-size: 50px;
+  font-weight: bold;
+  width: 50px; 
+  height: 50px; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  line-height: 50px;
+  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.top-right {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  border-radius: 20%;
+  background: red;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
+  pointer-events: auto;
+  cursor: pointer;
+}
+
 .time {
   position: absolute;
   top: 15%;
