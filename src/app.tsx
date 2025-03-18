@@ -92,7 +92,7 @@ export function App() {
           transform: "translateX(-50%)",
           padding: "10px 20px",
           borderRadius: "12px",
-          background: "#007AFF",
+          background: "teal",
           color: "white",
           border: "none",
           cursor: "pointer",
