@@ -15,11 +15,10 @@ import {
 
 
 import { Matrix4 } from 'three'
-
-// import { HitTest } from './hit-test'
 import { Duck } from './duck'
 import { Ducks } from './ducks'
 import { HitTestHandheld } from './hit-test-handheld'
+import { useSpawnStore } from './store'
 
 export let hitTestMatrices: Partial<Record<XRHandedness, Matrix4 | undefined>> = {}
 
@@ -72,6 +71,15 @@ const xr_store = createXRStore({
 })
 
 export function App() {
+
+  const { spawnCall, setSpawnCall } = useSpawnStore()
+
+  const handleSpawnDuck = () => {
+    if (!spawnCall) {
+      setSpawnCall(true)
+    }
+  }
+
   return (
     <>
       {/* Start AR button - Center Top */}
@@ -125,6 +133,27 @@ export function App() {
                 }}
               >
                 Exit AR
+              </button>
+
+              {/* Duck spawn button - Bottom Center */}
+              <button
+                onClick={handleSpawnDuck}
+                style={{
+                  position: "absolute",
+                  bottom: "50px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  padding: "10px 20px",
+                  borderRadius: "12px",
+                  background: "#FFD700",
+                  color: "black",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                }}
+              >
+                Duck
               </button>
             </XRDomOverlay>
           </IfInSessionMode>

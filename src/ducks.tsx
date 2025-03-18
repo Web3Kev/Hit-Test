@@ -1,14 +1,33 @@
 import { useXRInputSourceEvent } from '@react-three/xr'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Quaternion, Vector3 } from 'three'
 import { Duck } from './duck.js'
 import { hitTestMatrices } from './app.js'
-
+import { useSpawnStore } from './store'
 
 const vectorHelper = new Vector3()
 
 export const Ducks = () => {
   const [ducks, setDucks] = useState<Array<{ position: Vector3; quaternion: Quaternion }>>([])
+  const { spawnCall, setSpawnCall } = useSpawnStore()
+  
+  useEffect(() => {
+    if (spawnCall) {
+      // Find the first available hit test matrix
+      const handedness = Object.keys(hitTestMatrices)[0] as XRHandedness
+      const matrix = hitTestMatrices[handedness]
+      
+      if (matrix) {
+        const position = new Vector3()
+        const quaternion = new Quaternion()
+        matrix.decompose(position, quaternion, vectorHelper)
+        setDucks((ducks) => [...ducks, { position, quaternion }])
+      }
+      
+      // Reset spawn call
+      setSpawnCall(false)
+    }
+  }, [spawnCall, setSpawnCall])
 
   useXRInputSourceEvent(
     'all',
