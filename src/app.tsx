@@ -167,7 +167,7 @@ export function App() {
                   }}
                 />
               </button>
-              showReset && <button
+              {showReset && (<button
                 onClick={() => handleReset()}
                 className='top-right-second'
               >
@@ -180,7 +180,7 @@ export function App() {
                     objectFit: "contain", // Ensure the image doesn't stretch
                   }}
                 />
-              </button>
+              </button>)}
               <button
                 onClick={() => handleSpawnDuck()}
                 className='bottom-right'

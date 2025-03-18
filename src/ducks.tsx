@@ -33,7 +33,7 @@ export const Ducks = () => {
 
   useEffect(() => {
     if (callReset) {
-      
+
       setDucks([]);
       
       // Reset spawn call
@@ -43,7 +43,7 @@ export const Ducks = () => {
       //reset call
       setCallReset(false)
     }
-  }, [spawnCall, setSpawnCall])
+  }, [callReset])
 
   useXRInputSourceEvent(
     'all',

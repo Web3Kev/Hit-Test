@@ -18,4 +18,3 @@ export const useStore = create<StoreState>((set) => ({
   setCallReset: (value) => set({ callReset: value }),
 }))
 
-//store
