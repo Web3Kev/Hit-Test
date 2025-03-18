@@ -195,6 +195,8 @@ export function App() {
                 background: "red",
                 border: "none",
                 cursor: "pointer",
+                fontSize: "50px", // Ensure this is large enough
+                fontWeight: "bold",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -202,7 +204,8 @@ export function App() {
                 height: "50px", // Set the button size
               }}
             >
-              <img 
+              X
+              {/* <img 
                 src="exit.png"  // Path to your exit.png file
                 alt="Exit"
                 style={{
@@ -210,7 +213,7 @@ export function App() {
                   height: "30px", // Set the image size
                   objectFit: "contain", // Ensure the image doesn't stretch
                 }}
-              />
+              /> */}
             </button>
             <button
               onClick={() => handleSpawnDuck()}
