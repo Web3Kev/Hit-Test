@@ -6,22 +6,6 @@
   user-select: none;        
 }
 
-/* body {
-  touch-action: none;
-  margin: 0;
-  position: relative;
-  width: 100dvw;
-  height: 100dvh;
-  overflow: hidden;
-} */
-
-/* #root {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-} */
-
 html,
 body,
 #root {
@@ -32,6 +16,7 @@ body,
   height: 100%;
   background: ivory;
   margin: 0;
+  font-family: 'Arial', sans-serif;
 }
 
 .ARbutton{
@@ -70,12 +55,49 @@ body,
 
 }
 
+#hit-test-instructions {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-40%);
+  color: #faf8f8;
+  font-size: 22px;
+  background: indianred;
+  padding: 20px 20px 40px 20px;
+  text-align: left;
+  z-index: 100;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  
+}
+
+
+
+/* Position the button at the top right */
+#hit-test-instructions button {
+  position: absolute;
+  bottom: 20px;
+  right: 55px;
+  background: #e8e7e2;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  height: 35px;
+  border-radius: 10px;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease-in-out, transform 0.1s;
+}
+
+
+
 .bottom-right {
   position: absolute;
-  /* top: 80%; */
   bottom: 20px;
   right: 20px;
-  /* transform: translateY(-80%); */
   padding: 0; 
   border-radius: 12px;
   background: teal;
@@ -147,36 +169,5 @@ body,
   background: red; 
 }
 
-.time {
-  position: absolute;
-  top: 15%;
-  left: 0;
-  width: 100%;
-  color: #fff;
-  font-size: 48px;
-  background: #00000033;
-  padding-top: 5px;
-  text-align: center;
-}
 
-/* RESTART "BUTTON" */
-.restart {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 40%;
-  left: 0;
-  width: 100%;
-  color: #fff;
-  font-size: 80px;
-  background: #00000033;
-  padding-top: 10px;
-  text-align: center;
 
-  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
-  pointer-events: auto;
-  cursor: pointer;
-
-  /* NEEDS TO BE HIGHER INDEX THAN #touch-controls-container FOR JUMP */
-  z-index: 10;
-}

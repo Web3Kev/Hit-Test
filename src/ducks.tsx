@@ -11,6 +11,8 @@ export const Ducks = () => {
   const [ducks, setDucks] = useState<Array<{ position: Vector3; quaternion: Quaternion }>>([])
   const { spawnCall, setSpawnCall, callReset, setCallReset, setShowReset } = useStore()
   
+
+  //spawn at reticule on button pressed (screen based AR) >> eyejack
   useEffect(() => {
     if (spawnCall) {
       // Find the first available hit test matrix
@@ -31,11 +33,10 @@ export const Ducks = () => {
     }
   }, [spawnCall, setSpawnCall])
 
+  //delete all ducks on button pressed (screen based AR) >> eyejack
   useEffect(() => {
     if (callReset) {
-
       setDucks([]);
-      
       // Reset spawn call
       setSpawnCall(false)
       //hide reset
@@ -45,6 +46,8 @@ export const Ducks = () => {
     }
   }, [callReset])
 
+  //normal passthrough AR, Hands and Controller placement
+  // delete all ducks not implemented
   useXRInputSourceEvent(
     'all',
     'select',
@@ -53,7 +56,6 @@ export const Ducks = () => {
       if (matrix) {
         const position = new Vector3()
         const quaternion = new Quaternion()
-
         matrix.decompose(position, quaternion, vectorHelper)
         setDucks((ducks) => [...ducks, { position, quaternion }])
       }
