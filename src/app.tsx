@@ -87,46 +87,40 @@ export function App() {
       {/* Start AR button - Center Top */}
       <button
         onClick={() => xr_store.enterAR()}
-        style={{
-          position: "absolute",
-          top: "50px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          padding: "10px 20px",
-          borderRadius: "12px",
-          background: "teal",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
-          fontSize: "20px", // Increased font size
-          fontWeight: "bold",
-          zIndex: 1000, 
-        }}
+        className='ARbutton'
       >
         Enter AR
       </button>
       {/* <div id='interface' >
-                        <button
-                onClick={() => xr_store.getState().session?.end()}
-                className='top-right'
-              >
-                <img 
-                  src="exit.png"  // Path to your exit.png file
-                  alt="Exit"
-                  style={{
-                    width: "30px", // Set the image size
-                    height: "30px", // Set the image size
-                    objectFit: "contain", // Ensure the image doesn't stretch
-                  }}
-                />
-              </button>
-              <button
-                onClick={() => handleSpawnDuck()}
-                className='bottom-right'
-              >
-                +
-              </button>
-              </div> */}
+        <button
+          onClick={() => xr_store.getState().session?.end()}
+          className='top-right'
+        >
+          <img 
+            src="exit.png"  // Path to your exit.png file
+            alt="Exit"
+            style={{
+              width: "30px", // Set the image size
+              height: "30px", // Set the image size
+              objectFit: "contain", // Ensure the image doesn't stretch
+            }}
+          />
+        </button>
+        <button
+          onClick={() => handleSpawnDuck()}
+          className='bottom-right'
+        >
+           <img 
+            src="duck.png"  // Path to your exit.png file
+            alt="Duck"
+            style={{
+              width: "45px", // Set the image size
+              height: "45px", // Set the image size
+              objectFit: "contain", // Ensure the image doesn't stretch
+            }}
+          />
+        </button>
+      </div> */}
 
       <Canvas>
         <XR store={xr_store}>
@@ -201,7 +195,15 @@ export function App() {
                 onClick={() => handleSpawnDuck()}
                 className='bottom-right'
               >
-                +
+                <img 
+                  src="duck.png"  // Path to your exit.png file
+                  alt="Duck"
+                  style={{
+                    width: "45px", // Set the image size
+                    height: "45px", // Set the image size
+                    objectFit: "contain", // Ensure the image doesn't stretch
+                  }}
+                />
               </button>
               </div>
             </XRDomOverlay>
