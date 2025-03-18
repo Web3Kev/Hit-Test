@@ -17,7 +17,7 @@ import { Matrix4 } from 'three'
 import { Duck } from './duck'
 import { Ducks } from './ducks'
 // import { HitTestHandheld } from './hit-test-handheld'
-import { useSpawnStore } from './store'
+import { useStore } from './store'
 import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
 
@@ -74,11 +74,17 @@ const xr_store = createXRStore({
 
 export function App() {
 
-  const { spawnCall, setSpawnCall } = useSpawnStore()
+  const { spawnCall, setSpawnCall,callReset, setCallReset, showReset } = useStore()
 
   const handleSpawnDuck = () => {
     if (!spawnCall) {
       setSpawnCall(true)
+    }
+  }
+
+  const handleReset = () => {
+    if (showReset && !callReset) {
+      setCallReset(true);
     }
   }
 
@@ -99,6 +105,20 @@ export function App() {
           <img 
             src="exit.png"  // Path to your exit.png file
             alt="Exit"
+            style={{
+              width: "30px", // Set the image size
+              height: "30px", // Set the image size
+              objectFit: "contain", // Ensure the image doesn't stretch
+            }}
+          />
+        </button>
+        showReset && <button
+          onClick={() => handleReset()}
+          className='top-right-second'
+        >
+          <img 
+            src="trash.png"  // Path to your exit.png file
+            alt="reset"
             style={{
               width: "30px", // Set the image size
               height: "30px", // Set the image size
@@ -129,53 +149,9 @@ export function App() {
 
           <IfInSessionMode allow={'immersive-ar'}>
             <HitTest />
-            {/* <HitTestHandheld/> */}
             <Ducks />
 
             <XRDomOverlay>
-              {/* Exit AR button - Top Right */}
-              {/* <button
-                onClick={() => xr_store.getState().session?.end()}
-                style={{
-                  position: "absolute",
-                  top: "50px",
-                  right: "20px",
-                  padding: "10px 20px",
-                  borderRadius: "12px",
-                  background: "red",
-                  color: "white",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "20px", // Increased font size
-                  fontWeight: "bold",
-                }}
-              >
-                Exit AR
-              </button> */}
-
-              {/* Duck spawn button - Bottom Center */}
-              {/* <button
-                onClick={()=>handleSpawnDuck()}
-                style={{
-                  position: "absolute",
-                  top: "50px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  padding: "10px 20px",
-                  borderRadius: "12px",
-                  background: "#FFD700",
-                  color: "black",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  width: "150px",
-                  height:"50px",
-                }}
-              >
-                Duck
-              </button> */}
-
               <div id='interface' >
               <button
                 onClick={() => xr_store.getState().session?.end()}
@@ -188,6 +164,20 @@ export function App() {
                     width: "30px", 
                     height: "30px", 
                     objectFit: "contain", 
+                  }}
+                />
+              </button>
+              showReset && <button
+                onClick={() => handleReset()}
+                className='top-right-second'
+              >
+                <img 
+                  src="trash.png"  // Path to your exit.png file
+                  alt="reset"
+                  style={{
+                    width: "30px", // Set the image size
+                    height: "30px", // Set the image size
+                    objectFit: "contain", // Ensure the image doesn't stretch
                   }}
                 />
               </button>
