@@ -185,62 +185,48 @@ export function App() {
             <Ducks />
 
             <XRDomOverlay>
-            <button
-              onClick={() => xr_store.getState().session?.end()}
-              style={{
-                position: "absolute",
-                top: "50px",
-                right: "20px",
-                borderRadius: "20%",
-                background: "red",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "50px", // Ensure this is large enough
-                fontWeight: "bold",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "50px", // Set the button size
-                height: "50px", // Set the button size
-              }}
-            >
-              X
-              {/* <img 
-                src="exit.png"  // Path to your exit.png file
-                alt="Exit"
+              {/* Exit AR button - Top Right */}
+              <button
+                onClick={() => xr_store.getState().session?.end()}
                 style={{
-                  width: "30px", // Set the image size
-                  height: "30px", // Set the image size
-                  objectFit: "contain", // Ensure the image doesn't stretch
+                  position: "absolute",
+                  top: "50px",
+                  right: "20px",
+                  padding: "10px 20px",
+                  borderRadius: "12px",
+                  background: "red",
+                  color: "white",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "20px", // Increased font size
+                  fontWeight: "bold",
                 }}
-              /> */}
-            </button>
-            <button
-              onClick={() => handleSpawnDuck()}
-              style={{
-                position: "absolute",
-                top: "80%",
-                right: "20px",
-                transform: "translateY(-80%)",
-                padding: "0", // Remove padding to allow the button size to fit the content
-                paddingBottom :"8px",
-                borderRadius: "12px",
-                background: "#FFD700",
-                color: "black",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "50px", // Ensure this is large enough
-                fontWeight: "bold",
-                width: "50px", // Set width to match font size or slightly bigger
-                height: "50px", // Set height to match font size or slightly bigger
-                display: "flex",
-                alignItems: "center", // Centers vertically
-                justifyContent: "center", // Centers horizontally
-                lineHeight: "50px", // Ensure line-height matches the height to center text vertically
-              }}
-            >
-              +
-            </button>
+              >
+                Exit AR
+              </button>
+
+              {/* Duck spawn button - Bottom Center */}
+              <button
+                onClick={()=>handleSpawnDuck()}
+                style={{
+                  position: "absolute",
+                  top: "80%",
+                  left: "50%",
+                  transform: "translateY(-80%)",
+                  padding: "10px 20px",
+                  borderRadius: "12px",
+                  background: "#FFD700",
+                  color: "black",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  width: "150px",
+                  height:"50px",
+                }}
+              >
+                Duck
+              </button>
             </XRDomOverlay>
           </IfInSessionMode>
 
