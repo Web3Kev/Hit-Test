@@ -1,5 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
+import { Analytics } from "@vercel/analytics/react" //<-- analytics for the web demo (remove from your code)
 
 import {
   createXRStore,
@@ -104,6 +105,9 @@ export function App() {
       
 
       <Canvas>
+        {/* Vercel Analytics for the web Demo ... remove in your code */}
+        <Analytics/>
+        
         <XR store={xr_store}>
 
           <directionalLight position={[1, 2, 1]} />
