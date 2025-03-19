@@ -1,4 +1,8 @@
-Original code taken from [pmndrs XR example repo](https://github.com/shpowley).
+### R3F HitTest example, adjusted to work on iOS (via Eyejack)
+
+![0319](https://github.com/user-attachments/assets/450e7167-73ae-4714-968e-13da00074fea)
+
+Original code from [Sung Powley](https://github.com/shpowley) on  [Poimandres r3f XR repo](https://github.com/pmndrs/xr).
 
 I made the following changes to make it work out of the box on iOS WebXR via the Eyejack AppClips:
 
@@ -11,10 +15,14 @@ I made the following changes to make it work out of the box on iOS WebXR via the
 
 ### Notes on XRDomOverlay:
 - Works fine, but **CSS styling needs to be simplified**—ideally, with a **single CSS file at the root**.
-- **Inline styling did not work**; using a separate CSS file improved performance.
 - The experience **is not dynamically resizable**.
 - It is currently **only available in full-screen, portrait mode**.
 
+### Live Demo:
+- follow this link if you already are on your phone [▶ Here](https://play.eyejack.xyz/link/?url=https%3A%2F%2Fhit-test-theta.vercel.app%2F)
+- or Scan this QR code with an iPhone
+- Choose "Open with AppClip" from eyejack (no download required).
+  
 <img src="https://github.com/user-attachments/assets/fa634bc6-b8a7-4e54-bfe1-0a1fb4826d5a" width="400">
 
-[▶ Demo Live Here](https://play.eyejack.xyz/link/?url=https%3A%2F%2Fhit-test-theta.vercel.app%2F)
+
