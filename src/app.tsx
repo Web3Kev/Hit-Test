@@ -176,12 +176,12 @@ export function App() {
             </XRDomOverlay>
           </IfInSessionMode>
 
-          <IfInSessionMode deny={'immersive-ar'}>
+          {/* <IfInSessionMode deny={'immersive-ar'}>
             <Suspense fallback={null}>
               <Duck position={[0, -2, 0]} scale={2} />
             </Suspense>
             <OrbitControls/>
-          </IfInSessionMode>
+          </IfInSessionMode> */}
 
         </XR>
       </Canvas>
