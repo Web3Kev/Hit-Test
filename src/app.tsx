@@ -75,7 +75,7 @@ export function App() {
   const { spawnCall, setSpawnCall,callReset, setCallReset, showReset } = useStore()
 
   const [showInfo, setShowInfo] = useState<Boolean>(true);
-  const [gettingReady, setGettingReady] = useState<Boolean>(false);
+  const [gettingReady, setGettingReady] = useState<boolean>(false);
 
   const handleSpawnDuck = () => {
     if (!spawnCall) {
@@ -95,9 +95,10 @@ export function App() {
 
   const handleEnterAR = async () => {
     setGettingReady(true)
-    
+    // console.log("start")
     try {
       await xr_store.enterAR()
+      // console.log("clicked")
       
       // Wait for session to be fully ready
       await new Promise<void>(resolve => {
@@ -126,9 +127,9 @@ export function App() {
     <>
       <button
         // onClick={() => xr_store.enterAR()}
-        onClick={() => handleEnterAR}
+        onClick={() => handleEnterAR()}
         className='ARbutton'
-        disabled={!gettingReady}
+        disabled={gettingReady}
       >
         {/* Enter AR */}
         {gettingReady ? 'Loading AR...' : 'Enter AR'}
