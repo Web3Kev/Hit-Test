@@ -306,7 +306,7 @@ const xr_store = createXRStore({
 
 export function App() {
   const { spawnCall, setSpawnCall, callReset, setCallReset, showReset } = useStore()
-  const [showInfo, setShowInfo] = useState<Boolean>(true)
+  const [showInfo, setShowInfo] = useState<boolean>(true)
 
   const handleSpawnDuck = () => {
     if (!spawnCall) {
