@@ -321,20 +321,14 @@ export function App() {
   }
 
   const hideInfo = () => {
-    setShowInfo(false)
-
-     requestAnimationFrame(() => {
-    const root = document.getElementById('hit-test-instructions');
-    if (root && root.parentNode) {
-      const parent = root.parentNode;
-      parent.removeChild(root);
-
-      // Force full rebind by re-attaching
-      requestAnimationFrame(() => {
-        parent.appendChild(root);
-      });
-    }
-  });
+    // setShowInfo(false)
+     const instructions = document.getElementById('hit-test-instructions')
+      if (instructions) {
+        instructions.classList.add('fading-out')
+        setTimeout(() => setShowInfo(false), 300) // Wait for animation
+      } else {
+        setShowInfo(false)
+      }
   }
 
   return (
@@ -366,7 +360,6 @@ export function App() {
         <XR store={xr_store}>
           {/* 🔧 ADD POLYFILL FIX FIRST - This is critical! */}
           <AggressivePolyfillFix />
-          {/* <XRRepaintOnChange trigger={showInfo} /> */}
           
           {/* 🔍 Optional: Enable for debugging */}
           {/* <XRDebugger verbose={true} /> */}

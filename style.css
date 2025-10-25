@@ -72,6 +72,12 @@ body,
   
 }
 
+#hit-test-instructions.fading-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+}
+
 
 
 /* Position the button at the top right */
