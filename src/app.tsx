@@ -75,6 +75,7 @@ export function App() {
   const { spawnCall, setSpawnCall,callReset, setCallReset, showReset } = useStore()
 
   const [showInfo, setShowInfo] = useState<Boolean>(true);
+  const [gettingReady, setGettingReady] = useState<Boolean>(false);
 
   const handleSpawnDuck = () => {
     if (!spawnCall) {
@@ -92,13 +93,45 @@ export function App() {
     setShowInfo(false);
   }
 
+  const handleEnterAR = async () => {
+    setGettingReady(true)
+    
+    try {
+      await xr_store.enterAR()
+      
+      // Wait for session to be fully ready
+      await new Promise<void>(resolve => {
+        const checkSession = () => {
+          const mode = xr_store.getState().mode
+          if (mode && mode === 'immersive-ar') {
+            console.log('✅ Session ready:', mode)
+            resolve()
+          } else {
+            console.log('⏳ Waiting for session...', mode)
+            setTimeout(checkSession, 100)
+          }
+        }
+        checkSession()
+      })
+      
+      console.log('✅ AR session fully initialized')
+    } catch (error) {
+      console.error('Failed to enter AR:', error)
+    } finally {
+      setGettingReady(false)
+    }
+  }
+
   return (
     <>
       <button
-        onClick={() => xr_store.enterAR()}
+        // onClick={() => xr_store.enterAR()}
+        onClick={() => handleEnterAR}
         className='ARbutton'
+        disabled={!gettingReady}
       >
-        Enter AR
+        {/* Enter AR */}
+        {gettingReady ? 'Loading AR...' : 'Enter AR'}
       </button>
 
    
