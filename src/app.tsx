@@ -254,7 +254,7 @@ import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
 
 // Import the polyfill fix
-import { AggressivePolyfillFix, XRRepaintOnChange } from './PolyfillFix'
+import { AggressivePolyfillFix } from './PolyfillFix'
 
 export let hitTestMatrices: Partial<Record<XRHandedness, Matrix4 | undefined>> = {}
 
@@ -322,6 +322,19 @@ export function App() {
 
   const hideInfo = () => {
     setShowInfo(false)
+
+     requestAnimationFrame(() => {
+    const root = document.getElementById('hit-test-instructions');
+    if (root && root.parentNode) {
+      const parent = root.parentNode;
+      parent.removeChild(root);
+
+      // Force full rebind by re-attaching
+      requestAnimationFrame(() => {
+        parent.appendChild(root);
+      });
+    }
+  });
   }
 
   return (
@@ -353,7 +366,7 @@ export function App() {
         <XR store={xr_store}>
           {/* 🔧 ADD POLYFILL FIX FIRST - This is critical! */}
           <AggressivePolyfillFix />
-          <XRRepaintOnChange trigger={showInfo} />
+          {/* <XRRepaintOnChange trigger={showInfo} /> */}
           
           {/* 🔍 Optional: Enable for debugging */}
           {/* <XRDebugger verbose={true} /> */}
@@ -366,6 +379,7 @@ export function App() {
             <Ducks />
             <XRDomOverlay>
               <div id='interface'>
+
                 {showInfo && (
                   <div id='hit-test-instructions'>
                     1 - Aim with the targeting reticle<br /><br />
