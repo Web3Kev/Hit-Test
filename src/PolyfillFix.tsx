@@ -112,6 +112,10 @@ export function AggressivePolyfillFix() {
       // Verify
       if (xr.mode === 'immersive-ar' && 
           xr.session.environmentBlendMode === 'alpha-blend') {
+        
+        // Set to transparent / none
+        document.documentElement.style.background = 'none';
+
         console.log('✅ Session properly configured!')
         return
       }
