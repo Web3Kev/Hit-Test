@@ -76,6 +76,7 @@ export function App() {
 
   const [showInfo, setShowInfo] = useState<Boolean>(true);
   const [gettingReady, setGettingReady] = useState<boolean>(false);
+  const [arReady, setArReady] = useState<boolean>(false);
 
   const handleSpawnDuck = () => {
     if (!spawnCall) {
@@ -120,6 +121,7 @@ export function App() {
       console.error('Failed to enter AR:', error)
     } finally {
       setGettingReady(false)
+      setArReady(true);
     }
   }
 
@@ -148,7 +150,8 @@ export function App() {
           
           <ambientLight />
 
-          <IfInSessionMode allow={'immersive-ar'}>
+          {/* <IfInSessionMode allow={'immersive-ar'}> */}
+          {arReady && <>
             <HitTest />
             <Ducks />
             <XRDomOverlay>
@@ -208,14 +211,17 @@ export function App() {
               </button>
               </div>
             </XRDomOverlay>
-          </IfInSessionMode>
+          </>}
+          {/* </IfInSessionMode> */}
 
-          <IfInSessionMode deny={'immersive-ar'}>
+          {/* <IfInSessionMode deny={'immersive-ar'}> */}
+          {!arReady && <>
             <Suspense fallback={null}>
               <Duck position={[0, -2, 0]} scale={2} />
             </Suspense>
             <OrbitControls/>
-          </IfInSessionMode>
+          </>}
+           {/* </IfInSessionMode> */}
 
         </XR>
       </Canvas>
