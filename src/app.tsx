@@ -254,7 +254,7 @@ import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
 
 // Import the polyfill fix
-import { AggressivePolyfillFix } from './PolyfillFix'
+import { AggressivePolyfillFix, XRRepaintOnChange } from './PolyfillFix'
 
 export let hitTestMatrices: Partial<Record<XRHandedness, Matrix4 | undefined>> = {}
 
@@ -322,14 +322,6 @@ export function App() {
 
   const hideInfo = () => {
     setShowInfo(false)
-
-    requestAnimationFrame(() => {
-      const el = document.getElementById('interface');
-      if (el) el.style.display = 'none';
-      requestAnimationFrame(() => {
-        if (el) el.style.display = '';
-      });
-    });
   }
 
   return (
@@ -361,6 +353,7 @@ export function App() {
         <XR store={xr_store}>
           {/* 🔧 ADD POLYFILL FIX FIRST - This is critical! */}
           <AggressivePolyfillFix />
+          <XRRepaintOnChange trigger={showInfo} />
           
           {/* 🔍 Optional: Enable for debugging */}
           {/* <XRDebugger verbose={true} /> */}
@@ -380,7 +373,7 @@ export function App() {
                     3 - Place a duck (press button)<br />
 
                     <button onClick={() => hideInfo()}>
-                      {showInfo ? "close" : "closed"}
+                      close
                     </button>
                   </div>
                 )}

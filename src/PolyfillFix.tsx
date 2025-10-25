@@ -4,6 +4,39 @@
 import { useXR } from '@react-three/xr'
 import { useEffect } from 'react'
 
+interface XRRepaintOnChangeProps {
+  trigger: unknown
+}
+
+export function XRRepaintOnChange({ trigger }: XRRepaintOnChangeProps) {
+  const xr = useXR()
+
+  useEffect(() => {
+    if (!xr.session) return
+
+    // Try to locate the DOM overlay container as best we can
+    const root =
+      // Some polyfills expose this root (non-standard)
+      (xr.session as any).domOverlayRoot ||
+      // Official spec: session.domOverlayState?.rootLayer may exist
+      (xr.session as any).domOverlayState?.rootLayer ||
+      // Fallback: typical R3F/XRDomOverlay selector
+      document.querySelector('[xr-dom-overlay]') ||
+      // Or your own custom container
+      document.getElementById('interface')
+
+    if (!root) return
+
+    // ✅ Force repaint without layout flicker
+    root.style.transform = 'translateZ(0)'
+    // Trigger a forced reflow
+    root.getBoundingClientRect()
+    root.style.transform = ''
+  }, [trigger, xr.session])
+
+  return null
+}
+
 export function PolyfillFix() {
   const xr = useXR()
   
