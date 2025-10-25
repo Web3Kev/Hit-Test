@@ -6,7 +6,7 @@ import {
   createXRStore,
   DefaultXRController,
   DefaultXRHand,
-  IfInSessionMode,
+  // IfInSessionMode,
   useXRInputSourceStateContext,
   XR,
   XRDomOverlay,
