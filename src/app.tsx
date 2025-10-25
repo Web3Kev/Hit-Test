@@ -372,7 +372,7 @@ export function App() {
                     3 - Place a duck (press button)<br />
 
                     <button onClick={() => hideInfo()}>
-                      close
+                      showInfo ?? "close" : "closed"
                     </button>
                   </div>
                 )}
