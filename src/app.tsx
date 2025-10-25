@@ -20,6 +20,7 @@ import { Ducks } from './ducks'
 import { useStore } from './store'
 import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
+import { AggressivePolyfillFix } from './PolyfillFix'
 
 
 export let hitTestMatrices: Partial<Record<XRHandedness, Matrix4 | undefined>> = {}
@@ -156,7 +157,7 @@ export function App() {
         <Analytics/>
         
         <XR store={xr_store}>
-
+          <AggressivePolyfillFix />
           <directionalLight position={[1, 2, 1]} />
           
           <ambientLight />
