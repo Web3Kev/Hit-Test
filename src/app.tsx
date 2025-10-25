@@ -322,6 +322,14 @@ export function App() {
 
   const hideInfo = () => {
     setShowInfo(false)
+
+    requestAnimationFrame(() => {
+      const el = document.getElementById('interface');
+      if (el) el.style.display = 'none';
+      requestAnimationFrame(() => {
+        if (el) el.style.display = '';
+      });
+    });
   }
 
   return (
@@ -372,7 +380,7 @@ export function App() {
                     3 - Place a duck (press button)<br />
 
                     <button onClick={() => hideInfo()}>
-                      showInfo ?? "close" : "closed"
+                      {showInfo ? "close" : "closed"}
                     </button>
                   </div>
                 )}
