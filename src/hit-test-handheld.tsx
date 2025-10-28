@@ -7,6 +7,7 @@ import { onResults } from './app.js'
 const HitTestHandheld = () => {
   useXRHitTest(onResults.bind(null, 'none'), 'viewer')
 
+
   return <Reticle handedness="none" />
 }
 
