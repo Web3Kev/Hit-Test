@@ -108,35 +108,25 @@ export function App() {
   }
 
   const handleEnterAR = async () => {
-    setGettingReady(true)
-    // console.log("start")
-    try {
-      await xr_store.enterAR()
-      // console.log("clicked")
-      
-      // Wait for session to be fully ready
-      await new Promise<void>(resolve => {
-        const checkSession = () => {
-          const mode = xr_store.getState().mode
-          if (mode && mode === 'immersive-ar') {
-            console.log('✅ Session ready:', mode)
-            resolve()
-          } else {
-            console.log('⏳ Waiting for session...', mode)
-            setTimeout(checkSession, 100)
-          }
-        }
-        checkSession()
-      })
-      
-      console.log('✅ AR session fully initialized')
-    } catch (error) {
-      console.error('Failed to enter AR:', error)
-    } finally {
-      setGettingReady(false)
-      // setArReady(true);
-    }
+  try {
+    setGettingReady(true);
+    
+    // Ensure session is properly initialized
+    console.log('🎯 Entering AR...');
+    
+    await xr_store.enterAR();
+    
+    // Force a small delay to ensure session is fully started
+    setTimeout(() => {
+      console.log('✅ AR Session state:');
+      setGettingReady(false);
+    }, 500);
+    
+  } catch (error) {
+    console.error('❌ Failed to enter AR:', error);
+    setGettingReady(false);
   }
+};
 
   return (
     <>
