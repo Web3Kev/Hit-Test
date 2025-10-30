@@ -110,6 +110,8 @@ export function App() {
   }
 
   const handleEnterAR = async () => {
+
+    console.log('!!!!!!!!!!!! --------- HERE -------- !!!!!!!!!!!!!');
   try {
     setGettingReady(true);
     
@@ -129,6 +131,8 @@ export function App() {
     setGettingReady(false);
   }
 };
+
+
 
   return (
     <>
@@ -156,7 +160,6 @@ export function App() {
           <ambientLight />
 
           {/* <ContinuousHitTest/> */}
-          <HitTest />
 
           <IfInSessionMode allow={'immersive-ar'}>
           {/* {arReady && <> */}
