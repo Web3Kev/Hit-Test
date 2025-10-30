@@ -21,6 +21,7 @@ import { Ducks } from './ducks'
 import { useStore } from './store'
 import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
+import { ContinuousHitTest } from './xustomHit'
 
 
 
@@ -66,6 +67,7 @@ const xr_store = createXRStore({
         <DefaultXRController />
         <XRSpace space={state.inputSource.targetRaySpace}>
           <XRHitTest onResults={onResults.bind(null, state.inputSource.handedness)} />
+      
         </XRSpace>
       </>
     )
@@ -152,6 +154,8 @@ export function App() {
           <directionalLight position={[1, 2, 1]} />
           
           <ambientLight />
+
+          <ContinuousHitTest/>
 
           <IfInSessionMode allow={'immersive-ar'}>
           {/* {arReady && <> */}
