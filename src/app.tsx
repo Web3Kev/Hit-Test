@@ -155,7 +155,8 @@ export function App() {
           
           <ambientLight />
 
-          <ContinuousHitTest/>
+          {/* <ContinuousHitTest/> */}
+          <HitTest />
 
           <IfInSessionMode allow={'immersive-ar'}>
           {/* {arReady && <> */}
