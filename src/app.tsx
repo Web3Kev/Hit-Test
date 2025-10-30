@@ -21,7 +21,7 @@ import { Ducks } from './ducks'
 import { useStore } from './store'
 import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
-import { ContinuousHitTest } from './xustomHit'
+// import { ContinuousHitTest } from './xustomHit'
 
 
 
