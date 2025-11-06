@@ -6,7 +6,6 @@ import {
   createXRStore,
   DefaultXRController,
   DefaultXRHand,
-  IfInSessionMode,
   // IfInSessionMode,
   useXRInputSourceStateContext,
   XR,
@@ -19,9 +18,9 @@ import { Matrix4 } from 'three'
 import { Duck } from './duck'
 import { Ducks } from './ducks'
 import { useStore } from './store'
-import { HitTest } from './hit-test'
+// import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
-// import { ContinuousHitTest } from './xustomHit'
+import { ContinuousHitTest } from './xustomHit'
 
 
 
@@ -80,7 +79,7 @@ export function App() {
 
   const [showInfo, setShowInfo] = useState<Boolean>(true);
   const [gettingReady, setGettingReady] = useState<boolean>(false);
-  // const [arReady, setArReady] = useState<boolean>(false);
+  const [arReady, setArReady] = useState<boolean>(false);
 
   const handleSpawnDuck = () => {
     if (!spawnCall) {
@@ -112,6 +111,7 @@ export function App() {
   const handleEnterAR = async () => {
 
     console.log('!!!!!!!!!!!! --------- HERE -------- !!!!!!!!!!!!!');
+
   try {
     setGettingReady(true);
     
@@ -124,6 +124,7 @@ export function App() {
     setTimeout(() => {
       console.log('✅ AR Session state:');
       setGettingReady(false);
+      setArReady(true);
     }, 500);
     
   } catch (error) {
@@ -159,11 +160,12 @@ export function App() {
           
           <ambientLight />
 
-          {/* <ContinuousHitTest/> */}
+         
 
-          <IfInSessionMode allow={'immersive-ar'}>
-          {/* {arReady && <> */}
-            <HitTest />
+          {/* <IfInSessionMode allow={'immersive-ar'}> */}
+          {arReady && <>
+            {/* <HitTest /> */}
+             <ContinuousHitTest/>
             <Ducks />
             <XRDomOverlay>
               <div id='interface' >
@@ -222,17 +224,17 @@ export function App() {
               </button>
               </div>
             </XRDomOverlay>
-          {/* </>} */}
-          </IfInSessionMode>
+          </>}
+          {/* </IfInSessionMode> */}
 
-          <IfInSessionMode deny={'immersive-ar'}>
-          {/* {!arReady && <> */}
+          {/* <IfInSessionMode deny={'immersive-ar'}> */}
+          {!arReady && <>
             <Suspense fallback={null}>
               <Duck position={[0, -2, 0]} scale={2} />
             </Suspense>
             <OrbitControls/>
-          {/* </>} */}
-           </IfInSessionMode>
+          </>}
+           {/* </IfInSessionMode> */}
 
         </XR>
       </Canvas>
