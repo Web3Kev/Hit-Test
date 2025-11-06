@@ -20,7 +20,8 @@ import { Ducks } from './ducks'
 import { useStore } from './store'
 // import { HitTest } from './hit-test'
 // import { OrbitControls } from '@react-three/drei'
-import { ContinuousHitTest } from './xustomHit'
+// import { ContinuousHitTest } from './xustomHit'
+import { HitTest } from './hit-test'
 
 
 
@@ -164,8 +165,8 @@ export function App() {
 
           {/* <IfInSessionMode allow={'immersive-ar'}> */}
           {/* {arReady && <> */}
-            {/* <HitTest /> */}
-             <ContinuousHitTest/>
+            <HitTest />
+             {/* <ContinuousHitTest/> */}
             <Ducks />
             <XRDomOverlay>
               <div id='interface' >
