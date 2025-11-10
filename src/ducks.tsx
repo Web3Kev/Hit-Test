@@ -1,5 +1,5 @@
 import { useXRInputSourceEvent } from '@react-three/xr'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Quaternion, Vector3 } from 'three'
 import { Duck } from './duck.js'
 import { hitTestMatrices } from './app.js'
@@ -8,8 +8,8 @@ import { useStore } from './store'
 const vectorHelper = new Vector3()
 
 export const Ducks = () => {
-  const [ducks, setDucks] = useState<Array<{ position: Vector3; quaternion: Quaternion }>>([])
-  const { spawnCall, setSpawnCall, callReset, setCallReset, setShowReset } = useStore()
+  // const [ducks, setDucks] = useState<Array<{ position: Vector3; quaternion: Quaternion }>>([])
+  const { spawnCall, setSpawnCall, setShowReset,ducks, addDuck } = useStore()
   
 
   //spawn at reticule on button pressed (screen based AR) >> eyejack
@@ -23,7 +23,8 @@ export const Ducks = () => {
         const position = new Vector3()
         const quaternion = new Quaternion()
         matrix.decompose(position, quaternion, vectorHelper)
-        setDucks((ducks) => [...ducks, { position, quaternion }])
+        addDuck({ position, quaternion })
+        // setDucks((ducks) => [...ducks, { position, quaternion }])
       }
       
       // Reset spawn call
@@ -34,17 +35,17 @@ export const Ducks = () => {
   }, [spawnCall, setSpawnCall])
 
   //delete all ducks on button pressed (screen based AR) >> eyejack
-  useEffect(() => {
-    if (callReset) {
-      setDucks([]);
-      // Reset spawn call
-      setSpawnCall(false)
-      //hide reset
-      setShowReset(false)
-      //reset call
-      setCallReset(false)
-    }
-  }, [callReset])
+  // useEffect(() => {
+  //   if (callReset) {
+  //     setDucks([]);
+  //     // Reset spawn call
+  //     setSpawnCall(false)
+  //     //hide reset
+  //     setShowReset(false)
+  //     //reset call
+  //     setCallReset(false)
+  //   }
+  // }, [callReset])
 
   //normal passthrough AR, Hands and Controller placement
   // delete all ducks not implemented
@@ -57,7 +58,8 @@ export const Ducks = () => {
         const position = new Vector3()
         const quaternion = new Quaternion()
         matrix.decompose(position, quaternion, vectorHelper)
-        setDucks((ducks) => [...ducks, { position, quaternion }])
+        // setDucks((ducks) => [...ducks, { position, quaternion }])
+        addDuck({ position, quaternion })
       }
     },
 

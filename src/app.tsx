@@ -76,7 +76,7 @@ const xr_store = createXRStore({
 
 export function App() {
 
-  const { spawnCall, setSpawnCall,callReset, setCallReset, showReset } = useStore()
+  const { spawnCall, setSpawnCall,callReset, showReset, resetAll } = useStore()
 
   const [showInfo, setShowInfo] = useState<Boolean>(true);
   const [gettingReady, setGettingReady] = useState<boolean>(false);
@@ -106,7 +106,8 @@ export function App() {
 
   const handleReset = () => {
     if (!callReset) {
-      setCallReset(true);
+      // setCallReset(true);
+      resetAll();
     }
   }
 
