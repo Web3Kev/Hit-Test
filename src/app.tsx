@@ -76,7 +76,9 @@ const xr_store = createXRStore({
 
 export function App() {
 
-  const { spawnCall, setSpawnCall,callReset, showReset, resetAll } = useStore()
+  const { spawnCall, setSpawnCall,callReset, showReset } = useStore()
+  const resetAll = useStore((s) => s.resetAll)
+
 
   const [showInfo, setShowInfo] = useState<Boolean>(true);
   const [gettingReady, setGettingReady] = useState<boolean>(false);
