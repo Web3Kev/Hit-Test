@@ -77,13 +77,15 @@ const xr_store = createXRStore({
 export function App() {
 
   const { spawnCall, setSpawnCall, showReset } = useStore()
-  const resetAll = useStore((s) => s.resetAll)
+  const setCallReset = useStore((s) => s.setCallReset)
 
 
   const [showInfo, setShowInfo] = useState<Boolean>(true);
   const [gettingReady, setGettingReady] = useState<boolean>(false);
   const resetButton = useRef<null | HTMLButtonElement>(null)
   // const [arReady, setArReady] = useState<boolean>(false);
+
+
 
   const handleSpawnDuck = () => {
     if (!spawnCall) {
@@ -109,7 +111,8 @@ export function App() {
   const handleReset = () => {
     // if (!callReset) {
       // setCallReset(true);
-      resetAll();
+      setCallReset(true);
+
     // }
   }
 

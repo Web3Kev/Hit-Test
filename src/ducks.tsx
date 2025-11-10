@@ -4,12 +4,13 @@ import { Quaternion, Vector3 } from 'three'
 import { Duck } from './duck.js'
 import { hitTestMatrices } from './app.js'
 import { useStore } from './store'
+import { useThree } from '@react-three/fiber'
 
 const vectorHelper = new Vector3()
 
 export const Ducks = () => {
   // const [ducks, setDucks] = useState<Array<{ position: Vector3; quaternion: Quaternion }>>([])
-  const { spawnCall, setSpawnCall, setShowReset,ducks, addDuck, resetAll } = useStore()
+  const { spawnCall, setSpawnCall, setShowReset,ducks, addDuck, resetAll,setCallReset, callReset } = useStore()
   
   const controller_right = useXRInputSourceState("controller", "right");
 
@@ -35,12 +36,23 @@ export const Ducks = () => {
     }
   }, [spawnCall, setSpawnCall])
 
+  const invalidate = useThree((state) => state.invalidate)
+
+  useEffect(()=>{
+    if(callReset)
+    {
+      console.log("resetting !")
+      resetAll();
+      invalidate();
+    }
+    
+  },[callReset])
+
   useXRControllerButtonEvent(controller_right!, "b-button", (state) => {
     if (state === "pressed") {
       vibrate(controller_right);
       // Handle pressed event
-      resetAll();
-      console.log("reset")
+      setCallReset(true);
     }
     if (state === "touched") {
       // Handle touched event
