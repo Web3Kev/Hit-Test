@@ -94,6 +94,7 @@ export function App() {
     {
       resetButton.current.hidden=!showReset;
       resetButton.current.disabled=!showReset;
+      forceUpdate();
     }
   }, [showReset])
 
@@ -102,6 +103,18 @@ export function App() {
       setCallReset(true);
     }
   }
+
+  const forceUpdate = ()=>{
+    requestAnimationFrame(() => {
+      const overlay = document.querySelector('[xr-dom-overlay], #interface')
+      if (overlay instanceof HTMLElement) {
+        overlay.style.display = 'none'
+        overlay.offsetHeight // ✅ valid inside this block
+        overlay.style.display = 'block'
+      }
+    })
+  }
+
 
   // const hideInfo = () => {
   //   setShowInfo(false);
