@@ -174,6 +174,23 @@ export function App() {
         {/* Enter AR */}
         {gettingReady ? 'Loading AR...' : 'Enter AR'}
       </button>
+      <button
+        onClick={() => handleReset()}
+        style={{
+          position: 'absolute', // position relative to viewport
+          top: '10px',          // distance from top
+          left: '10px',         // distance from left
+          padding: '8px 12px',  // button padding
+          fontSize: '16px',     // readable text
+          borderRadius: '6px',  // rounded corners
+          border: 'none',       // remove default border
+          backgroundColor: '#ff5555', // red if active, gray if disabled
+          color: '#fff',        // text color
+          zIndex: 1000,         // ensure it's on top of other elements
+        }}
+      >
+        Reset
+      </button>
 
    
       
