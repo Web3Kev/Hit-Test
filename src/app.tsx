@@ -90,12 +90,18 @@ export function App() {
   }
 
   useEffect(() => {
-    if(resetButton.current)
-    {
-      resetButton.current.style.display = showReset ? 'block' : 'none'
-      resetButton.current.disabled = !showReset
-      forceUpdate();
-    }
+    const el = resetButton.current
+    if (!el) return
+
+    el.disabled = !showReset
+    el.style.visibility = showReset ? 'visible' : 'hidden'
+    el.style.pointerEvents = showReset ? 'auto' : 'none'
+
+    // ⚡ force EyeJack to refresh overlay after change
+    requestAnimationFrame(() => {
+      const overlay = document.querySelector('[xr-dom-overlay], #interface')
+      if (overlay instanceof HTMLElement) overlay.offsetHeight
+    })
   }, [showReset])
 
   const handleReset = () => {
@@ -104,16 +110,7 @@ export function App() {
     }
   }
 
-  const forceUpdate = ()=>{
-    requestAnimationFrame(() => {
-      const overlay = document.querySelector('[xr-dom-overlay], #interface')
-      if (overlay instanceof HTMLElement) {
-        overlay.style.display = 'none'
-        overlay.offsetHeight // ✅ valid inside this block
-        overlay.style.display = 'block'
-      }
-    })
-  }
+ 
 
 
   // const hideInfo = () => {
@@ -149,6 +146,13 @@ export function App() {
       setGettingReady(false);
       // setArReady(true);
     }, 500);
+
+    setTimeout(() => {
+    if (resetButton.current) {
+      resetButton.current.style.visibility = showReset ? 'visible' : 'hidden'
+      resetButton.current.style.pointerEvents = showReset ? 'auto' : 'none'
+    }
+  }, 1000)
     
   } catch (error) {
     console.error('❌ Failed to enter AR:', error);
@@ -222,7 +226,10 @@ export function App() {
                 ref={resetButton}
                 onClick={() => handleReset()}
                 disabled={true}
-                hidden={true}
+                style={{
+                  visibility: 'hidden',
+                  pointerEvents: 'none',
+                }}
                 className='top-right-second'
               >
                 <img 
