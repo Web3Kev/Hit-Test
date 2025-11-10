@@ -76,7 +76,7 @@ const xr_store = createXRStore({
 
 export function App() {
 
-  const { spawnCall, setSpawnCall,callReset, showReset } = useStore()
+  const { spawnCall, setSpawnCall, showReset } = useStore()
   const resetAll = useStore((s) => s.resetAll)
 
 
