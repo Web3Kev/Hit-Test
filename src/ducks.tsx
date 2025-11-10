@@ -1,4 +1,4 @@
-import { useXRInputSourceEvent } from '@react-three/xr'
+import { useXRControllerButtonEvent, useXRInputSourceEvent, useXRInputSourceState } from '@react-three/xr'
 import { useEffect } from 'react'
 import { Quaternion, Vector3 } from 'three'
 import { Duck } from './duck.js'
@@ -9,8 +9,9 @@ const vectorHelper = new Vector3()
 
 export const Ducks = () => {
   // const [ducks, setDucks] = useState<Array<{ position: Vector3; quaternion: Quaternion }>>([])
-  const { spawnCall, setSpawnCall, setShowReset,ducks, addDuck } = useStore()
+  const { spawnCall, setSpawnCall, setShowReset,ducks, addDuck, resetAll } = useStore()
   
+  const controller_right = useXRInputSourceState("controller", "right");
 
   //spawn at reticule on button pressed (screen based AR) >> eyejack
   useEffect(() => {
@@ -34,6 +35,33 @@ export const Ducks = () => {
     }
   }, [spawnCall, setSpawnCall])
 
+  useXRControllerButtonEvent(controller_right!, "b-button", (state) => {
+    if (state === "pressed") {
+      vibrate(controller_right);
+      // Handle pressed event
+      resetAll();
+      console.log("reset")
+    }
+    if (state === "touched") {
+      // Handle touched event
+    }
+    if (state === "default") {
+      // Handle default state
+    }
+  });
+
+  const vibrate = (controller: ReturnType<typeof useXRInputSourceState>) => {
+    try {
+      controller?.inputSource?.gamepad?.vibrationActuator?.playEffect("dual-rumble", {
+        duration: 10,
+        strongMagnitude: 1,
+        weakMagnitude: 0.5,
+      });
+    } catch {
+      console.log("No haptic feedback available");
+    }
+  };
+  
   //delete all ducks on button pressed (screen based AR) >> eyejack
   // useEffect(() => {
   //   if (callReset) {
@@ -65,6 +93,8 @@ export const Ducks = () => {
 
     [],
   )
+
+  
 
   return ducks.map((item, index) => (
     <Duck key={index} position={item.position} quaternion={item.quaternion} scale={0.2} />

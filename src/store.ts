@@ -1,5 +1,7 @@
 import { Quaternion, Vector3 } from 'three'
-import { create } from 'zustand'
+// import { create } from 'zustand'
+import { shallow } from 'zustand/shallow';
+import { createWithEqualityFn } from 'zustand/traditional';
 
 type Duck = { position: Vector3; quaternion: Quaternion }
 
@@ -16,7 +18,8 @@ interface StoreState {
   resetAll: () => void
 }
 
-export const useStore = create<StoreState>((set) => ({
+export const useStore = createWithEqualityFn<StoreState>(
+  (set) => ({
   ducks: [],
   spawnCall: false,
   showReset:false,
@@ -36,5 +39,9 @@ export const useStore = create<StoreState>((set) => ({
       showReset: false,
       callReset: false,
     }),
-}))
+    
+}),
+shallow
+
+)
 
