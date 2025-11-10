@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Analytics } from "@vercel/analytics/react" //<-- analytics for the web demo (remove from your code)
 
 import {
@@ -80,6 +80,7 @@ export function App() {
 
   const [showInfo, setShowInfo] = useState<Boolean>(true);
   const [gettingReady, setGettingReady] = useState<boolean>(false);
+  const resetButton = useRef<null | HTMLButtonElement>(null)
   // const [arReady, setArReady] = useState<boolean>(false);
 
   const handleSpawnDuck = () => {
@@ -88,8 +89,16 @@ export function App() {
     }
   }
 
+  useEffect(() => {
+    if(resetButton.current)
+    {
+      resetButton.current.hidden=!showReset;
+      resetButton.current.disabled=!showReset;
+    }
+  }, [showReset])
+
   const handleReset = () => {
-    if (showReset && !callReset) {
+    if (!callReset) {
       setCallReset(true);
     }
   }
@@ -195,8 +204,12 @@ export function App() {
                   }}
                 />
               </button>
-              {showReset && (<button
+              {/* {showReset && ( */}
+                <button
+                ref={resetButton}
                 onClick={() => handleReset()}
+                disabled={true}
+                hidden={true}
                 className='top-right-second'
               >
                 <img 
@@ -208,7 +221,8 @@ export function App() {
                     objectFit: "contain", 
                   }}
                 />
-              </button>)}
+              </button>
+            {/* )} */}
               <button
                 onClick={() => handleSpawnDuck()}
                 className='bottom-right'
