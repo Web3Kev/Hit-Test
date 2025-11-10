@@ -107,10 +107,10 @@ export function App() {
   }, [showReset])
 
   const handleReset = () => {
-    if (!callReset) {
+    // if (!callReset) {
       // setCallReset(true);
       resetAll();
-    }
+    // }
   }
 
  
