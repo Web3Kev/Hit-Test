@@ -44,7 +44,7 @@ export const Ducks = () => {
       //reset call
       setCallReset(false)
     }
-  }, [callReset, setCallReset])
+  }, [callReset])
 
   //normal passthrough AR, Hands and Controller placement
   // delete all ducks not implemented

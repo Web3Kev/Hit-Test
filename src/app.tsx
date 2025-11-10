@@ -90,13 +90,12 @@ export function App() {
   }
 
   useEffect(() => {
-    // if(resetButton.current)
-    // {
-    //   resetButton.current.hidden=!showReset;
-    //   resetButton.current.disabled=!showReset;
-    //   forceUpdate();
-    // }
-     forceUpdate();
+    if(resetButton.current)
+    {
+      resetButton.current.style.display = showReset ? 'block' : 'none'
+      resetButton.current.disabled = !showReset
+      forceUpdate();
+    }
   }, [showReset])
 
   const handleReset = () => {
@@ -218,12 +217,12 @@ export function App() {
                   }}
                 />
               </button>
-              {showReset && (
+              {/* {showReset && ( */}
                 <button
                 ref={resetButton}
                 onClick={() => handleReset()}
-                // disabled={true}
-                // hidden={true}
+                disabled={true}
+                hidden={true}
                 className='top-right-second'
               >
                 <img 
@@ -236,7 +235,7 @@ export function App() {
                   }}
                 />
               </button>
-            )} 
+            {/* )}  */}
               <button
                 onClick={() => handleSpawnDuck()}
                 className='bottom-right'
