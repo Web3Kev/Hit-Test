@@ -114,7 +114,7 @@ export function App() {
           
           <ambientLight />
 
-          <IfInSessionMode allow={'immersive-ar'}>
+          <IfInSessionMode allow={['immersive-ar', "inline"]}>
             <HitTest />
             <Ducks />
             <XRDomOverlay>
@@ -176,7 +176,7 @@ export function App() {
             </XRDomOverlay>
           </IfInSessionMode>
 
-          <IfInSessionMode deny={'immersive-ar'}>
+          <IfInSessionMode deny={['immersive-ar', "inline"]}>
             <Suspense fallback={null}>
               <Duck position={[0, -2, 0]} scale={2} />
             </Suspense>
