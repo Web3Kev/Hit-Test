@@ -6,7 +6,7 @@ import {
   createXRStore,
   DefaultXRController,
   DefaultXRHand,
-  IfInSessionMode,
+ 
   useXRInputSourceStateContext,
   XR,
   XRDomOverlay,
@@ -114,7 +114,7 @@ export function App() {
           
           <ambientLight />
 
-          <IfInSessionMode allow={['immersive-ar', "inline"]}>
+          {/* <IfInSessionMode allow={['immersive-ar', "inline"]}> */}
             <HitTest />
             <Ducks />
             <XRDomOverlay>
@@ -174,7 +174,7 @@ export function App() {
               </button>
               </div>
             </XRDomOverlay>
-          </IfInSessionMode>
+          {/* </IfInSessionMode> */}
 
           {/* <IfInSessionMode deny={['immersive-ar', "inline"]}>
             <Suspense fallback={null}>
