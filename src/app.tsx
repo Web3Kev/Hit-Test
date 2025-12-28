@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { Analytics } from "@vercel/analytics/react" //<-- analytics for the web demo (remove from your code)
 
 import {
@@ -15,11 +15,11 @@ import {
 } from '@react-three/xr'
 
 import { Matrix4 } from 'three'
-import { Duck } from './duck'
+// import { Duck } from './duck'
 import { Ducks } from './ducks'
 import { useStore } from './store'
 import { HitTest } from './hit-test'
-import { OrbitControls } from '@react-three/drei'
+// import { OrbitControls } from '@react-three/drei'
 
 
 export let hitTestMatrices: Partial<Record<XRHandedness, Matrix4 | undefined>> = {}
@@ -176,12 +176,12 @@ export function App() {
             </XRDomOverlay>
           </IfInSessionMode>
 
-          <IfInSessionMode deny={['immersive-ar', "inline"]}>
+          {/* <IfInSessionMode deny={['immersive-ar', "inline"]}>
             <Suspense fallback={null}>
               <Duck position={[0, -2, 0]} scale={2} />
             </Suspense>
             <OrbitControls/>
-          </IfInSessionMode>
+          </IfInSessionMode> */}
 
         </XR>
       </Canvas>
