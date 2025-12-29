@@ -17,9 +17,9 @@ import {
 import { Matrix4 } from 'three'
 import { Duck } from './duck'
 import { Ducks } from './ducks'
-import { useStore } from './store'
 import { HitTest } from './hit-test'
 import { OrbitControls } from '@react-three/drei'
+import GameOverlayUI from './gameOverlayUi'
 
 
 export let hitTestMatrices: Partial<Record<XRHandedness, Matrix4 | undefined>> = {}
@@ -72,23 +72,7 @@ const xr_store = createXRStore({
 
 export function App() {
 
-  const { spawnCall, setSpawnCall,callReset, setCallReset, showReset, showInfo, setShowInfo } = useStore()
-
-  const handleSpawnDuck = () => {
-    if (!spawnCall) {
-      setSpawnCall(true)
-    }
-  }
-
-  const handleReset = () => {
-    if (showReset && !callReset) {
-      setCallReset(true);
-    }
-  }
-
-  const hideInfo = () => {
-    setShowInfo(false);
-  }
+  
 
   return (
     <>
@@ -98,9 +82,6 @@ export function App() {
       >
         Enter AR
       </button>
-
-   
-      
 
       <Canvas>
         {/* Vercel Analytics for the web Demo ... remove in your code */}
@@ -116,61 +97,7 @@ export function App() {
             <HitTest />
             <Ducks />
             <XRDomOverlay>
-              <div id='interface' >
-              {showInfo &&(<div id='hit-test-instructions'>
-                1 - Aim with the targeting reticle<br /><br />
-                2 - Choose a flat surface (floor, table, etc.)<br /><br />
-                3 - Place a duck (press button)<br />
-
-                <button
-                  onClick={() => hideInfo()}
-                >
-                  close
-                </button>
-              </div>)}
-              <button
-                onClick={() => xr_store.getState().session?.end()}
-                className='top-right'
-              >
-                <img 
-                  src="exit.png" 
-                  alt="Exit"
-                  style={{
-                    width: "30px", 
-                    height: "30px", 
-                    objectFit: "contain", 
-                  }}
-                />
-              </button>
-              {showReset && (<button
-                onClick={() => handleReset()}
-                className='top-right-second'
-              >
-                <img 
-                  src="trash.png" 
-                  alt="reset"
-                  style={{
-                    width: "30px", 
-                    height: "30px", 
-                    objectFit: "contain", 
-                  }}
-                />
-              </button>)}
-              <button
-                onClick={() => handleSpawnDuck()}
-                className='bottom-right'
-              >
-                <img 
-                  src="duck.png"  
-                  alt="Duck"
-                  style={{
-                    width: "45px", 
-                    height: "45px",
-                    objectFit: "contain",
-                  }}
-                />
-              </button>
-              </div>
+              <GameOverlayUI store={xr_store}/>
             </XRDomOverlay>
           </IfInSessionMode>
 
