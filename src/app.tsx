@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Suspense, useState } from 'react'
+import { Suspense } from 'react'
 import { Analytics } from "@vercel/analytics/react" //<-- analytics for the web demo (remove from your code)
 
 import {
@@ -72,9 +72,7 @@ const xr_store = createXRStore({
 
 export function App() {
 
-  const { spawnCall, setSpawnCall,callReset, setCallReset, showReset } = useStore()
-
-  const [showInfo, setShowInfo] = useState<Boolean>(true);
+  const { spawnCall, setSpawnCall,callReset, setCallReset, showReset, showInfo, setShowInfo } = useStore()
 
   const handleSpawnDuck = () => {
     if (!spawnCall) {
