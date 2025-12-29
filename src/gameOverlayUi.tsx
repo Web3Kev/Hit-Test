@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 
 import { XRStore } from '@react-three/xr';
 import { useStore } from './store';
@@ -26,8 +26,8 @@ const GameOverlayUI: React.FC<GameOverlayUIProps> = ({store = null }) => {
     
 
 
-    useEffect(() => {
-    }, []);
+    // useEffect(() => {
+    // }, []);
 
 
     const exitAR = () =>{
